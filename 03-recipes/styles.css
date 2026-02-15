@@ -5,7 +5,7 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-body {
+html {
     background-color: bisque;
 }
 
@@ -15,6 +15,52 @@ h1 {
     border-bottom: 2px double;
     padding: 15px;
     background-color: azure;
+    line-height: 30px;
+}
+
+.recipe {
+    background-color: azure;
+    width: 75%;
+    margin: auto;
+    border-left: 5px double crimson;
+    border-right: 5px double crimson;
+    padding: 0 20px;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: justify;
+}
+
+.recipe img {
+    display: block;
+    width: 530px;
+    margin: 0 auto 20px auto;
+}
+
+.recipe p strong {
+    /* color: crimson; */
+    text-decoration: dotted underline crimson;
+}
+
+.recipe-list {
+    margin-left: 20px;
+    
+}
+
+.recipe-list li {
+    margin-bottom: 15px;
+}
+
+.recipe-subtitle {
+    color: crimson;
+    /* margin: 40px 0 15px 15px; */
+    margin-bottom: 15px;
+    margin-top: 40px;
+}
+
+.home-link {
+    padding: 7px 15px;
+    display: inline-block;
+    font-weight: bold;
 }
 
 .card {
@@ -51,4 +97,5 @@ h1 {
 footer {
     text-align: center;
     font-size: small;
+    padding-bottom: 50px;
 }
