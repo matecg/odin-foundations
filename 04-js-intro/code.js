@@ -39,3 +39,11 @@ let z = +prompt("First number?", 1);
 let x = +prompt("Second number?", 2);
 
 alert(z + x);
+
+function capitalize(str) {
+    return `${str[0].toUpperCase()}${str.slice(1)}`;
+}
+
+console.log(capitalize("abcd"));
+console.log(capitalize("ABCD"));
+console.log(capitalize("aBcD"));
