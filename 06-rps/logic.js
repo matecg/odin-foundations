@@ -31,18 +31,6 @@ function playRound(humanChoice, computerChoice) {
     console.log(`Both players selected ${humanChoice}.`);
 }
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(`TURN: ${i + 1}`);
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-
-        playRound(humanChoice, computerChoice);
-        console.log(`PLAYER: ${humanScore} | COMPUTER: ${computerScore}`);
-        console.log("");
-    }
-}
-
 function processResult() {
     if (humanScore > computerScore) {
         console.log("🎊🥳 The Player wins! 🎊🥳");
@@ -55,5 +43,4 @@ function processResult() {
     console.log("Wow! Looks like we got a draw! 😮");
 }
 
-playGame();
 processResult();
