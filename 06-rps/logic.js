@@ -8,12 +8,14 @@ const restartBtn = document.querySelector(".restart-btn");
 let playerScore = 0;
 let computerScore = 0;
 
+resultPara.classList.remove("result");
 restartBtn.style.display = "none";
 restartBtn.addEventListener('click', restartGame);
 
 btns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
         const result = playRound(i, getComputerChoice());
+        resultPara.classList.add("result");
         updateTurnUI(result);
         processResult();
     })
@@ -55,6 +57,7 @@ function restartGame() {
     btns.forEach((btn) => btn.disabled = false);
     updateTurnUI("");
     restartBtn.style.display = "none";
+    resultPara.classList.remove("result");
 }
 
 function processResult() {
