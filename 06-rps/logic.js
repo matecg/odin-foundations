@@ -1,15 +1,21 @@
 const OPTIONS = ["rock", "paper", "scissors"];
+const MAX_ROUNDS = 5;
 const btns = document.querySelectorAll(".buttons-container > button");
 const playerScoreUI = document.querySelector(".player-score");
 const computerScoreUI = document.querySelector(".computer-score");
 const resultPara = document.querySelector(".result");
+const restartBtn = document.querySelector(".restart-btn");
 let playerScore = 0;
 let computerScore = 0;
+
+restartBtn.style.display = "none";
+restartBtn.addEventListener('click', restartGame);
 
 btns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
         const result = playRound(i, getComputerChoice());
         updateTurnUI(result);
+        processResult();
     })
 })
 
@@ -37,22 +43,28 @@ function playRound(humanIdx, computerChoice) {
     return `Looks like we have a draw!\nBoth players selected ${humanChoice}.`
 }
 
-function updateTurnUI(result)
-{
+function updateTurnUI(result) {
     resultPara.textContent = result;
     playerScoreUI.textContent = playerScore;
     computerScoreUI.textContent = computerScore;
 }
 
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    btns.forEach((btn) => btn.disabled = false);
+    updateTurnUI("");
+    restartBtn.style.display = "none";
+}
+
 function processResult() {
-    if (playerScore > computerScore) {
-        console.log("🎊🥳 The Player wins! 🎊🥳");
-        return;
-    }
-    if (computerScore > playerScore) {
-        console.log("The computer won this time! 🤖");
-        return;
-    }
-    console.log("Wow! Looks like we got a draw! 😮");
+    if (playerScore < MAX_ROUNDS && computerScore < MAX_ROUNDS) return;
+
+    let gameOver = playerScore === MAX_ROUNDS
+        ? "🎊🥳 The Player wins! 🎊🥳"
+        : "The computer won this time! 🤖";
+    resultPara.textContent = gameOver;
+    btns.forEach((btn) => btn.disabled = true);
+    restartBtn.style.display = "inline";
 }
 
