@@ -2,13 +2,14 @@ const OPTIONS = ["rock", "paper", "scissors"];
 const btns = document.querySelectorAll(".buttons-container > button");
 const playerScoreUI = document.querySelector(".player-score");
 const computerScoreUI = document.querySelector(".computer-score");
-let humanScore = 0;
+const resultPara = document.querySelector(".result");
+let playerScore = 0;
 let computerScore = 0;
 
 btns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
-        console.log(i);
-        playRound(i, getComputerChoice());
+        const result = playRound(i, getComputerChoice());
+        updateTurnUI(result);
     })
 })
 
@@ -26,27 +27,29 @@ function playRound(humanIdx, computerChoice) {
     const humanChoice = OPTIONS[humanIdx];
     const computerIdx = OPTIONS.indexOf(computerChoice);
     if (computerIdx === (humanIdx + 1) % 3) {
-        console.log("The computer wins this round!");
-        console.log(`${computerChoice} beats ${humanChoice}`);
         computerScore++;
-        return;
+        return `The computer wins this round!\n${computerChoice} beats ${humanChoice}`;
     }
     if (humanIdx === (computerIdx + 1) % 3) {
-        console.log("📣 The player wins this round! 🎊");
-        console.log(`${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-        return;
+        playerScore++;
+        return `📣 The player wins this round! 🎊\n${humanChoice} beats ${computerChoice}`;
     }
-    console.log("Looks like we have a draw!");
-    console.log(`Both players selected ${humanChoice}.`);
+    return `Looks like we have a draw!\nBoth players selected ${humanChoice}.`
+}
+
+function updateTurnUI(result)
+{
+    resultPara.textContent = result;
+    playerScoreUI.textContent = playerScore;
+    computerScoreUI.textContent = computerScore;
 }
 
 function processResult() {
-    if (humanScore > computerScore) {
+    if (playerScore > computerScore) {
         console.log("🎊🥳 The Player wins! 🎊🥳");
         return;
     }
-    if (computerScore > humanScore) {
+    if (computerScore > playerScore) {
         console.log("The computer won this time! 🤖");
         return;
     }
