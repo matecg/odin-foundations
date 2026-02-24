@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.opt-icon {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.buttons-container > button {
+    flex-basis: 100px;
+    flex-shrink: 0;
+    background-color: cornflowerblue;
+    border: 2px solid darkblue;
+    border-radius: 8px;
+    font-weight: 700;
+    color:aliceblue;
+    cursor: pointer;
+    font-family: "Metal Mania", system-ui;
+    font-size: 18px;
+    text-shadow: 2px 2px darkblue;
+}
+
+.buttons-container > button:hover {
+    background-color: darkblue;
+}
