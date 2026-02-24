@@ -1,6 +1,16 @@
 const OPTIONS = ["rock", "paper", "scissors"];
+const btns = document.querySelectorAll(".buttons-container > button");
+const playerScoreUI = document.querySelector(".player-score");
+const computerScoreUI = document.querySelector(".computer-score");
 let humanScore = 0;
 let computerScore = 0;
+
+btns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+        console.log(i);
+        playRound(i, getComputerChoice());
+    })
+})
 
 function getComputerChoice() {
     const idx = Math.floor(Math.random() * 3);
@@ -12,8 +22,8 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
-function playRound(humanChoice, computerChoice) {
-    const humanIdx = OPTIONS.indexOf(humanChoice);
+function playRound(humanIdx, computerChoice) {
+    const humanChoice = OPTIONS[humanIdx];
     const computerIdx = OPTIONS.indexOf(computerChoice);
     if (computerIdx === (humanIdx + 1) % 3) {
         console.log("The computer wins this round!");
@@ -43,4 +53,3 @@ function processResult() {
     console.log("Wow! Looks like we got a draw! 😮");
 }
 
-processResult();
